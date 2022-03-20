@@ -8,30 +8,37 @@
 //   anagrams('Heart!', 'EARTH') --> True
 //   anagrams('lol', 'lolc') --> False
 
-function anagrams(stringA, stringB) {}
+function anagrams(stringA, stringB) {
+  //sanitize input strings remove "/ etc
+  // stringA = stringA.toLowerCase().replace(/[\W_]+/g, " ");
+  // stringB = stringB.toLowerCase().replace(/[\W_]+/g, " ");
+  // if (stringA.length !== stringB.length) {
+  //   return false;
+  // }
 
-// _________ _______  _______ _________   _______  _______  _______  _______  _______
-// \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
-//    ) (   | (    \/| (    \/   ) (     | (    \/| (   ) || (    \/| (    \/| (    \/
-//    | |   | (__    | (_____    | |     | |      | (___) || (_____ | (__    | (_____
-//    | |   |  __)   (_____  )   | |     | |      |  ___  |(_____  )|  __)   (_____  )
-//    | |   | (            ) |   | |     | |      | (   ) |      ) || (            ) |
-//    | |   | (____/\/\____) |   | |     | (____/\| )   ( |/\____) || (____/\/\____) |
-//    )_(   (_______/\_______)   )_(     (_______/|/     \|\_______)(_______/\_______)
-//                             ____       _
-//                             |  _ \     | |
-//                             | |_) | ___| | _____      __
-//                             |  _ < / _ \ |/ _ \ \ /\ / /
-//                             | |_) |  __/ | (_) \ V  V /
-//                             |____/ \___|_|\___/ \_/\_/
-//                         ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
+  // const stringACharCount = {};
+  // for (let i = 0; i < stringA.length; i++) {
+  //   const aChar = stringA[i];
+  //   stringACharCount[aChar] = stringACharCount[aChar] + 1 || 1;
+  // }
 
-//                          ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
+  // for (let i = 0; i < stringB.length; i++) {
+  //   const bChar = stringB[i];
+  //   if (!stringACharCount[bChar]) {
+  //     return false;
+  //   } else {
+  //     stringACharCount[bChar]--;
+  //   }
+  // }
+  // return true;
 
-//                          ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
+  // second solution
+  stringA = stringA.toLowerCase().replace(/[\W_]+/g, " ");
+  stringB = stringB.toLowerCase().replace(/[\W_]+/g, " ");
+  const stringASorted = stringA.split("").sort().join("");
+  const stringBSorted = stringB.split("").sort().join("");
+  return stringASorted === stringBSorted;
+}
 
 mocha.setup("bdd");
 const { assert } = chai;
