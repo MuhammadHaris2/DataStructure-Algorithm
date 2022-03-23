@@ -2,30 +2,24 @@
 // for the provided value.
 // The Binary Search Algorithm will return the index of value found, or -1 if not found.
 
-const binarySearch = (sortedArr, value) => {};
+//a searching algo that can search in Olog(n) time for sorted array compared to linear search O(n) time for an unsorted array. It only works on sorted array
+const binarySearch = (sortedArr, value) => {
+  let left = 0;
+  let right = sortedArr.length - 1;
 
-// _________ _______  _______ _________   _______  _______  _______  _______  _______
-// \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
-//    ) (   | (    \/| (    \/   ) (     | (    \/| (   ) || (    \/| (    \/| (    \/
-//    | |   | (__    | (_____    | |     | |      | (___) || (_____ | (__    | (_____
-//    | |   |  __)   (_____  )   | |     | |      |  ___  |(_____  )|  __)   (_____  )
-//    | |   | (            ) |   | |     | |      | (   ) |      ) || (            ) |
-//    | |   | (____/\/\____) |   | |     | (____/\| )   ( |/\____) || (____/\/\____) |
-//    )_(   (_______/\_______)   )_(     (_______/|/     \|\_______)(_______/\_______)
-//                             ____       _
-//                             |  _ \     | |
-//                             | |_) | ___| | _____      __
-//                             |  _ < / _ \ |/ _ \ \ /\ / /
-//                             | |_) |  __/ | (_) \ V  V /
-//                             |____/ \___|_|\___/ \_/\_/
-//                         ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
-
-//                          ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
-
-//                          ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    const midVal = sortedArr[mid];
+    if (midVal === value) {
+      return mid;
+    } else if (midVal < value) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+  return -1;
+};
 
 mocha.setup("bdd");
 const { assert } = chai;
