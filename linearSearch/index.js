@@ -6,34 +6,37 @@
 // linearSearchIncludes(foods, "pizza") --> true
 // linearSearchFind(foods, food => food === "pizza") --> "pizza"
 
-function linearSearchIndexOf(arr, val) {}
+//it is best for unsorted array for sorted array we should use binary search
 
-function linearSearchIncludes(arr, val) {}
+function linearSearchIndexOf(arr, val) {
+  // for (let i = 0; i < arr.length; i++) {
+  //   if (arr[i] === val) {
+  //     return i;
+  //   }
+  // }
+  // return -1;
+  return arr.indexOf(val);
+}
 
-function linearSearchFind(arr, cb) {}
+function linearSearchIncludes(arr, val) {
+  // for (let i = 0; i < arr.length; i++) {
+  //   if (arr[i] === val) {
+  //     return true;
+  //   }
+  // }
+  // return false;
+  return arr.includes(val);
+}
 
-// _________ _______  _______ _________   _______  _______  _______  _______  _______
-// \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
-//    ) (   | (    \/| (    \/   ) (     | (    \/| (   ) || (    \/| (    \/| (    \/
-//    | |   | (__    | (_____    | |     | |      | (___) || (_____ | (__    | (_____
-//    | |   |  __)   (_____  )   | |     | |      |  ___  |(_____  )|  __)   (_____  )
-//    | |   | (            ) |   | |     | |      | (   ) |      ) || (            ) |
-//    | |   | (____/\/\____) |   | |     | (____/\| )   ( |/\____) || (____/\/\____) |
-//    )_(   (_______/\_______)   )_(     (_______/|/     \|\_______)(_______/\_______)
-//                             ____       _
-//                             |  _ \     | |
-//                             | |_) | ___| | _____      __
-//                             |  _ < / _ \ |/ _ \ \ /\ / /
-//                             | |_) |  __/ | (_) \ V  V /
-//                             |____/ \___|_|\___/ \_/\_/
-//                         ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
-
-//                          ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
-
-//                          ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
+function linearSearchFind(arr, cb) {
+  // for (let i = 0; i < arr.length; i++) {
+  //   if (cb(arr[i]) === true) {
+  //     return arr[i];
+  //   }
+  // }
+  // return undefined;
+  return arr.find(cb);
+}
 
 mocha.setup("bdd");
 const { assert } = chai;
@@ -51,7 +54,7 @@ describe("linearSearchIndexOf()", () => {
   });
 });
 
-describe.skip("linearSearchIncludes()", () => {
+describe("linearSearchIncludes()", () => {
   it("returns true if item found", () => {
     assert.equal(linearSearchIncludes(foods, "pizza"), true);
   });
@@ -60,17 +63,17 @@ describe.skip("linearSearchIncludes()", () => {
   });
 });
 
-describe.skip("linearSearchFind()", () => {
+describe("linearSearchFind()", () => {
   it("returns item back if found", () => {
     const kevin = people[0];
     assert.equal(
-      linearSearchFind(people, person => person.name === "Kevin"),
+      linearSearchFind(people, (person) => person.name === "Kevin"),
       kevin
     );
   });
   it("returns undefined if item NOT found", () => {
     assert.equal(
-      linearSearchFind(people, person => person.name === "Kevinn"),
+      linearSearchFind(people, (person) => person.name === "Kevinn"),
       undefined
     );
   });
